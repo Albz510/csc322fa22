@@ -1,0 +1,55 @@
+<script src="https://threejs.org/build/three.js"></script>
+
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera( 45, window.innerWidth/window.innerHeight, 0.1, 500 );
+
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize( window.innerWidth, window.innerHeight );
+document.body.appendChild( renderer.domElement );
+var a = (0,0,0);
+var b = (1,0,0);
+var c = (1,0,1);
+var d = (0,0,1);
+var e = (0,1,1);
+var f = (0,1,0);
+var g = (1,1,0);
+var h = (1,1,1);
+
+var pts = [
+
+  new THREE.Vector3(0,0,0),
+  new THREE.Vector3(1,0,0),
+  new THREE.Vector3(0,0,1),
+  new THREE.Vector3(1,0,1),
+  new THREE.Vector3(1,0,0),
+  new THREE.Vector3(1,1,0),
+  new THREE.Vector3(1,0,1),
+  new THREE.Vector3(1,1,1),
+  new THREE.Vector3(1,1,0),
+  new THREE.Vector3(0,1,0),
+  new THREE.Vector3(1,1,1),
+  new THREE.Vector3(0,1,1),
+  new THREE.Vector3(0,1,0),
+  new THREE.Vector3(0,0,0),
+  new THREE.Vector3(0,0,1),
+  new THREE.Vector3(0,1,1),
+  new THREE.Vector3(0,1,0),
+  new THREE.Vector3(1,0,0),
+  new THREE.Vector3(1,0,1),
+  new THREE.Vector3(0,1,1),
+  new THREE.Vector3(0,0,1),
+  new THREE.Vector3(0,1,0),
+  
+];
+
+
+const geo = new THREE.BufferGeometry().setFromPoints( pts );
+var material = new THREE.MeshBasicMaterial(  { color: 0xffffff} );
+
+const line = new THREE.Line( geo, material);
+
+scene.add( line );
+
+
+camera.position.z = 5;
+renderer.render( scene, camera );
